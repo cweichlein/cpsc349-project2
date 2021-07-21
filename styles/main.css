@@ -1,7 +1,7 @@
 
     .wrapper{
         display:grid;
-        grid-template-columns: 70% 30%;
+        grid-template-columns: 30% 40% 30%;
     }
     
     .wrapper > div{
@@ -10,4 +10,15 @@
     }
     .wrapper > div:nth-child(odd){
         background:rgb(49, 194, 92);
+    }
+    .wrapper > a{
+        background:rgb(12, 122, 196);
+        padding:1em;
+    }
+    .wrapper > li{
+        background:rgb(49, 194, 92);
+        padding:1em;
+    }
+    .navbar{
+        background: salmon;
     }
