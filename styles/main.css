@@ -1,5 +1,6 @@
 body {
     display:grid;
+    gap: 1em;
 }
 
 @media (min-width: 40em){
@@ -10,10 +11,45 @@ body {
         'nav footer footer'
     }
 
-    .banner {grid-area: banner;}
+    .banner {
+        grid-area: banner;
+    }
+
     nav {grid-area: nav;}
-    main {grid-area: main;}
-    .links {grid-area: links;}
+
+    /* Content area ====================================*/
+    .content {
+        grid-area: main;
+        background-color: lightslategray;
+    }
+
+    /* Links area ====================================*/
+    .links {
+        grid-area: links;
+        
+    }
+
+    .links h2 {
+        text-shadow: 1px;
+        font-size: x-large;
+
+    }
+    
+    /*Deals with the links individually*/
+    .links a {
+        text-decoration: underline;
+        color: blue;
+    }
+    
+    .links a:visited {
+        color: purple;
+    }
+    
+    .links a:hover {
+        color: red;
+    }
+
+    /* Footer area ====================================*/
     footer {grid-area: footer;}
 
 }

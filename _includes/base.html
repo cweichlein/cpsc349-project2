@@ -24,7 +24,7 @@ site: Pet Photos
         </nav>
         
         {% if content %}
-        <main>
+        <main class="content">
             {{ content }}
 
             {% if page.url contains '/photos/' %}
@@ -63,7 +63,9 @@ site: Pet Photos
         </main>
         {% endif %}
 
-        <div class="links">
+    
+    <div class="links">
+        <h2>Links:</h2>
         {% if page.url == '/' %}
         <ul>
             {% for photo in collections.photos %}
