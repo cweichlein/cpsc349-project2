@@ -1,7 +1,17 @@
+a:hover {
+    color:rgb(252, 227, 2);
+}
+a:active {
+    color: #0000FF;
+}
+
 body {
     display:grid;
 }
-.title{
+div{
+    background:sienna;
+}
+h1{
     background:rgb(252, 193, 0)
 }
 .wrapper{
