@@ -13,21 +13,6 @@ site: Pet Photos
     <body>
         <h1>{{ site }}</h1>
 
-        <!-- {% unless page.url == '/' %}
-            <a href="{{ '/' | url }}">Home</a>
-        {% endunless %}
-        {% unless page.url == '/dog/' %}
-            <a href="{{ '/dog/' | url }}">Dogs Only</a>
-        {% endunless %}
-        {% unless page.url == '/cat/' %}
-            <a href="{{ '/cat/' | url }}">Cats Only</a>
-        {% endunless %}
-        {% unless page.url == '/other/' %}
-            <a href="{{ '/other/' | url }}">Other Animals</a>
-        {% endunless %}
-        {% unless page.url == '/about/' %}
-            <a href="{{ '/about' | url }}">About Us</a>
-        {% endunless %} -->
         <nav class="navbar">
             <ul class="wrapper">
                 <li><a href="{{ '/' | url }}">Home</a></li>
@@ -37,42 +22,48 @@ site: Pet Photos
                 <li><a href="{{ '/about' | url }}">About Us</a></li>
             </ul>
         </nav>
-        {{ content }}
-
-        {% if page.url contains '/photos/' %}
-            <ul>
-                {% if photographer_first_name != '' %}
-                <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
-                {% else %}
-                <li><p> Photographer: Unknown </p></li>
-                {% endif %}
-
-                {% if exif_camera_make != '' %}
-                <li><p>Camera Make: {{ exif_camera_make }}</p></li>
-                {% else %}
-                <li><p> Camera Make: Unknown </p></li>
-                {% endif %}
-
-                {% if exif_camera_model != '' %}
-                <li><p>Camera Model: {{ exif_camera_model }}</p></li>
-                {% else %}
-                <li><p>Camera Model: Unknown</p></li>
-                {% endif %}
-
-                {% if photo_location_city != '' %}
-                <li><p>City: {{ photo_location_city }}</p></li>
-                {% else %}
-                <li><p>City: Unknown</p></li>
-                {% endif %}
-
-                {% if photo_location_city != '' %}
-                <li><p>Country: {{ photo_location_country }}</p></li>
-                {% else %}
-                <li><p>Country: Unknown</p></li>
-                {% endif %}
-            </ul>
-        {% endif %}
         
+        {% if content %}
+        <main>
+            {{ content }}
+
+            {% if page.url contains '/photos/' %}
+                <ul>
+                    {% if photographer_first_name != '' %}
+                    <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
+                    {% else %}
+                    <li><p> Photographer: Unknown </p></li>
+                    {% endif %}
+
+                    {% if exif_camera_make != '' %}
+                    <li><p>Camera Make: {{ exif_camera_make }}</p></li>
+                    {% else %}
+                    <li><p> Camera Make: Unknown </p></li>
+                    {% endif %}
+
+                    {% if exif_camera_model != '' %}
+                    <li><p>Camera Model: {{ exif_camera_model }}</p></li>
+                    {% else %}
+                    <li><p>Camera Model: Unknown</p></li>
+                    {% endif %}
+
+                    {% if photo_location_city != '' %}
+                    <li><p>City: {{ photo_location_city }}</p></li>
+                    {% else %}
+                    <li><p>City: Unknown</p></li>
+                    {% endif %}
+
+                    {% if photo_location_city != '' %}
+                    <li><p>Country: {{ photo_location_country }}</p></li>
+                    {% else %}
+                    <li><p>Country: Unknown</p></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </main>
+        {% endif %}
+
+        <div class="links">
         {% if page.url == '/' %}
         <ul>
             {% for photo in collections.photos %}
@@ -118,5 +109,8 @@ site: Pet Photos
             {% endfor %}
         </ul>
         {% endif %}
+    </div>
+
+    <footer>This is a footer</footer>
     </body>
 </html>
