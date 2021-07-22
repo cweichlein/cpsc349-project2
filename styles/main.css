@@ -1,24 +1,19 @@
+body {
+    display:grid;
+}
 
-    .wrapper{
-        display:grid;
-        grid-template-columns: 30% 40% 30%;
+@media (min-width: 40em){
+    body {
+        grid-template-areas: 
+        'banner banner banner'
+        'nav main links'
+        'nav footer footer'
     }
-    
-    .wrapper > div{
-        background:rgb(12, 122, 196);
-        padding:1em;
-    }
-    .wrapper > div:nth-child(odd){
-        background:rgb(49, 194, 92);
-    }
-    .wrapper > a{
-        background:rgb(12, 122, 196);
-        padding:1em;
-    }
-    .wrapper > li{
-        background:rgb(49, 194, 92);
-        padding:1em;
-    }
-    .navbar{
-        background: salmon;
-    }
+
+    .banner {grid-area: banner;}
+    nav {grid-area: nav;}
+    main {grid-area: main;}
+    .links {grid-area: links;}
+    footer {grid-area: footer;}
+
+}
