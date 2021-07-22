@@ -35,12 +35,17 @@ nav ul li a:hover {
 /* Start about us page */
 
 .about-us-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px 60px 0 60px;
+
+    display: grid;
+    grid-template-columns: 30% 40% 30%
+}
+
+.about-us-section > div{
+    background:rgb(12, 122, 196);
+    padding:1em;
+}
+.about-us-section > div:nth-child(odd){
+    background:rgb(49, 194, 92);
 }
 
 .about-us-section h2 {

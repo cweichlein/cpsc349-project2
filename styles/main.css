@@ -1,7 +1,20 @@
 body {
     display:grid;
 }
-
+.title{
+    background:rgb(252, 193, 0)
+}
+.wrapper{
+    display:grid;
+    grid-template-columns: 30% 40% 30%;
+}
+.wrapper > div{
+    background:rgb(12, 122, 196);
+    padding:1em;
+}
+.wrapper > div:nth-child(odd){
+    background:rgb(49, 194, 92);
+}
 @media (min-width: 40em){
     body {
         grid-template-areas: 
@@ -11,7 +24,9 @@ body {
     }
 
     .banner {grid-area: banner;}
-    nav {grid-area: nav;}
+    nav {grid-area: nav;
+        background: salmon;
+    }
     main {grid-area: main;}
     .links {grid-area: links;}
     footer {grid-area: footer;}
