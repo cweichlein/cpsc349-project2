@@ -10,7 +10,7 @@ site: Pet Photos
         <link rel="stylesheet" href="{{ '/styles/tailwind.css' | url }}">
         <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
     </head>
-    <body>
+    <body class="basicLayout">
         <h1>{{ site }}</h1>
 
         <nav>
@@ -109,11 +109,8 @@ site: Pet Photos
             {% endfor %}
         </ul>
         {% endif %}
-    </div>
+        </div>
 
-    <footer>This is a footer</footer>
     </body>
-    <footer>
-        This is a Footer!
-    </footer>
+    <footer>This is a footer</footer>
 </html>

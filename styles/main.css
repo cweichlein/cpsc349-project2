@@ -4,14 +4,18 @@ a:hover {
 a:active {
     color: #0000FF;
 }
-
-body {
-    display:grid;
-}
 div{
     background:sienna;
 }
-h1{
+
+.basicLayout{
+    display:grid;
+    
+}
+
+.wrapper > h1{
+    display:grid;
+    grid-template-rows: 100%;
     background:rgb(252, 193, 0)
 }
 .wrapper{
