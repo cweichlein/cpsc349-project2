@@ -1,9 +1,20 @@
-body {
+a:hover {
+    color:rgb(252, 227, 2);
+}
+a:active {
+    color: #0000FF;
+}
+div{
+    background:sienna;
+}
+
+.basicLayout{
     display:grid;
     background-color: lightyellow;
 }
 
 /* About us page */
+
 .wrapper > h1{
     display:grid;
     grid-template-rows: 100%;
@@ -20,7 +31,6 @@ body {
 .wrapper > div:nth-child(odd){
     background:rgb(49, 194, 92);
 }
-
 @media (min-width: 40em){
     body {
         grid-template-columns: 10em auto auto;
@@ -183,6 +193,13 @@ body {
         height: 3em;
         border-top: solid black;
     }
+    .banner {grid-area: banner;}
+    nav {grid-area: nav;
+        background: salmon;
+    }
+    main {grid-area: main;}
+    .links {grid-area: links;}
+    footer {grid-area: footer;}
 
 }
 
