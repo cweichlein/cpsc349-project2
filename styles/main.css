@@ -3,6 +3,24 @@ body {
     background-color: lightyellow;
 }
 
+/* About us page */
+.wrapper > h1{
+    display:grid;
+    grid-template-rows: 100%;
+    background:rgb(252, 193, 0)
+}
+.wrapper{
+    display:grid;
+    grid-template-columns: 30% 40% 30%;
+}
+.wrapper > div{
+    background:rgb(12, 122, 196);
+    padding:1em;
+}
+.wrapper > div:nth-child(odd){
+    background:rgb(49, 194, 92);
+}
+
 @media (min-width: 40em){
     body {
         grid-template-columns: 10em auto auto;
@@ -10,7 +28,7 @@ body {
         grid-template-areas: 
         'nav banner banner'
         'nav main links'
-        'footer footer footer'
+        'nav footer footer'
     }
 
     .banner {
@@ -23,8 +41,6 @@ body {
         line-height: 48px;
         margin: 0;
     }
-
-    h1 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; }
 
     /* Content area ====================================*/
     nav {
@@ -58,9 +74,8 @@ body {
     .content {
         grid-area: main;
         position: relative;
-        min-height: 100vh;
+        min-height: calc(100vh - 70px);;
         padding-bottom: 2.5em;
-        padding-left: 1em;
     }
 
     img {
@@ -106,51 +121,68 @@ body {
 
     /* This section is the styles for the show more and less */
     /* This code was taken from */
-    /*https://codepen.io/Idered/pen/AeBgF*/
-    .read-more-state {
-        display: none;
+    /* https://www.sitepoint.com/implementing-show-moreless-functionality-with-pure-css/ */
+    .container {
+        position: relative;
+        height: auto;
+        border-top: 0;
+    }
+    
+    [type="checkbox"]{
+        position: absolute;
+        left: -9999px;
     }
 
-    .read-more-target {
-        opacity: 0;
-        max-height: 0;
-        font-size: 0;
-        transition: .25s ease;
-    }
-
-    .read-more-state:checked ~ .read-more-wrap .read-more-target {
-        opacity: 1;
-        font-size: inherit;
-        max-height: 999em;
-    }
-
-    .read-more-state ~ .read-more-trigger:before {
-        content: 'Show more';
-    }
-
-    .read-more-state:checked ~ .read-more-trigger:before {
-        content: 'Show less';
-    }
-
-    .read-more-trigger {
+    label {
+        background: #e4e3df;
+        display: block;
+        width: 6em;
+        height: 50px;
         cursor: pointer;
-        display: inline-block;
-        padding: 0 .5em;
-        color: #666;
-        font-size: .9em;
-        line-height: 2;
-        border: 1px solid #ddd;
-        border-radius: .25em;
+        position: relative;
     }
+
+    label:before,
+    label:after {
+        position: absolute;
+    }
+
+    label:after {
+        content: 'Read More';
+        right: 10px;
+      }
+      
+      input[type="checkbox"] ~ ul {
+        width: 100%;
+        display: none;
+      }
+
+      [type="checkbox"]:checked ~ ul {
+        display: block;
+      } 
+      
+      [type="checkbox"]:checked + label {
+        position: absolute; 
+        top: 100%;
+      }
+      
+      [type="checkbox"]:checked + label:after {
+       content: 'Read Less'; 
+      }
+      
+      ul li:last-child {
+        margin-bottom: 50px;
+      }
     /* End of show more and less section*/
 
     /* Footer area ====================================*/
     footer {
         grid-area: footer;
-        position: static;
         bottom: 0;
         width: 100%;
-        height: 2rem;
+        height: 3em;
+        border-top: solid black;
     }
 
 }
+
