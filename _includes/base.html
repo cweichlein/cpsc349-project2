@@ -11,65 +11,75 @@ site: Pet Photos
         <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
     </head>
     <body>
-        <h1>{{ site }}</h1>
+        <h1 class="banner">{{ site }}</h1>
 
         <nav>
             <ul>
-                <li><a href="{{ '/' | url }}">Home</a></li>
-                <li><a href="{{ '/dog/' | url }}">Dogs Only</a></li>
-                <li><a href="{{ '/cat/' | url }}">Cats Only</a></li>
-                <li><a href="{{ '/other/' | url }}">Other Animals</a></li>
-                <li><a href="{{ '/about' | url }}">About Us</a></li>
+                <li><a href="{{ '/' | url }}" class="{% if page.url == '/' %}active-page{% endif %}">Home</a></li>
+                <li><a href="{{ '/dog/' | url }}" class="{% if page.url == '/dog/' %}active-page{% endif %}">Dogs Only</a></li>
+                <li><a href="{{ '/cat/' | url }}" class="{% if page.url == '/cat/' %}active-page{% endif %}">Cats Only</a></li>
+                <li><a href="{{ '/other/' | url }}" class="{% if page.url == '/other/' %}active-page{% endif %}">Other Animals</a></li>
+                <li><a href="{{ '/about' | url }}" class="{% if page.url == '/about/' %}active-page{% endif %}">About Us</a></li>
             </ul>
         </nav>
         
-        {% if content %}
+        {% if page.url contains '/photos/' %}
         <main class="content">
-            {{ content }}
+        {{ content }}
+        <div class="data">
+            <ul>
+                {% if photographer_first_name != '' %}
+                <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
+                {% else %}
+                <li><p> Photographer: Unknown </p></li>
+                {% endif %}
 
-            {% if page.url contains '/photos/' %}
-                <ul>
-                    {% if photographer_first_name != '' %}
-                    <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
-                    {% else %}
-                    <li><p> Photographer: Unknown </p></li>
-                    {% endif %}
+                {% if exif_camera_make != '' %}
+                <li><p>Camera Make: {{ exif_camera_make }}</p></li>
+                {% else %}
+                <li><p> Camera Make: Unknown </p></li>
+                {% endif %}
 
-                    {% if exif_camera_make != '' %}
-                    <li><p>Camera Make: {{ exif_camera_make }}</p></li>
-                    {% else %}
-                    <li><p> Camera Make: Unknown </p></li>
-                    {% endif %}
+                {% if exif_camera_model != '' %}
+                <li><p>Camera Model: {{ exif_camera_model }}</p></li>
+                {% else %}
+                <li><p>Camera Model: Unknown</p></li>
+                {% endif %}
 
-                    {% if exif_camera_model != '' %}
-                    <li><p>Camera Model: {{ exif_camera_model }}</p></li>
-                    {% else %}
-                    <li><p>Camera Model: Unknown</p></li>
-                    {% endif %}
+                {% if photo_location_city != '' %}
+                <li><p>City: {{ photo_location_city }}</p></li>
+                {% else %}
+                <li><p>City: Unknown</p></li>
+                {% endif %}
 
-                    {% if photo_location_city != '' %}
-                    <li><p>City: {{ photo_location_city }}</p></li>
-                    {% else %}
-                    <li><p>City: Unknown</p></li>
-                    {% endif %}
-
-                    {% if photo_location_city != '' %}
-                    <li><p>Country: {{ photo_location_country }}</p></li>
-                    {% else %}
-                    <li><p>Country: Unknown</p></li>
-                    {% endif %}
-                </ul>
-            {% endif %}
-        </main>
+                {% if photo_location_city != '' %}
+                <li><p>Country: {{ photo_location_country }}</p></li>
+                {% else %}
+                <li><p>Country: Unknown</p></li>
+                {% endif %}
+            </ul>
         {% endif %}
-
-    
-    <div class="links">
+        </main>
+        </div>
+        
+        <div class="links">
         <h2>Links:</h2>
+        <input type="checkbox" class="read-more-state" id="post-2" />
+
         {% if page.url == '/' %}
-        <ul>
+        <ul class="read-more-wrap">
+            {% assign my_variable = false %}
             {% for photo in collections.photos %}
-            <li>
+                {% if my_variable == true %}
+                <li class="read-more-target">
+                {% else %}
+                <li>
+                {% endif %}
+
+                {% if photo == collections.photos[10] %}
+                {% assign my_variable = true %}
+                {% endif %}
+
                 <a href="{{ photo.url | url }}">
                     {{ photo.data.ai_description }} - 
                     {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
@@ -78,9 +88,18 @@ site: Pet Photos
             {% endfor %}
         </ul>
         {% elsif photo_keyword == 'dog' or title == 'Dogs' %}
-        <ul>
+        <ul class="read-more-wrap">
+            {% assign my_variable = false %}
             {% for dog in collections.dogs %}
-            <li>
+                {% if my_variable == true %}
+                <li class="read-more-target">
+                {% else %}
+                <li>
+                {% endif %}
+
+                {% if dog == collections.dogs[10] %}
+                {% assign my_variable = true %}
+                {% endif %}
                 <a href="{{ dog.url | url }}">
                     {{ dog.data.ai_description }} - 
                     {{ dog.data.photographer_first_name}} {{ dog.data.photographer_last_name }} 
@@ -111,8 +130,9 @@ site: Pet Photos
             {% endfor %}
         </ul>
         {% endif %}
-    </div>
+        <label for="post-2" class="read-more-trigger"></label>
+        </div>
 
-    <footer>This is a footer</footer>
+        <footer>This is a footer</footer>
     </body>
 </html>
