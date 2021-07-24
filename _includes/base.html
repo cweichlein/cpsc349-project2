@@ -10,10 +10,10 @@ site: Pet Photos
         <link rel="stylesheet" href="{{ '/styles/tailwind.css' | url }}">
         <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
     </head>
-
-    <body class="basicLayout">
-        <h1>{{ site }}</h1>
-
+    
+    <body>
+        
+        <h1 class="banner">{{ site }}</h1>
         <nav>
             <ul>
                 <li><a href="{{ '/' | url }}" class="{% if page.url == '/' %}active-page{% endif %}">Home</a></li>
@@ -25,7 +25,7 @@ site: Pet Photos
         </nav>
         
         {% if page.url contains '/about/' %}{{content}}{% endif%}
-
+        
         {% if page.url contains '/photos/' %}
         <main class="content">
         {{ content }}
@@ -62,49 +62,11 @@ site: Pet Photos
                 <li><p>Country: Unknown</p></li>
                 {% endif %}
             </ul>
-        {% endif %}
-        </main>
         </div>
+        </main>
+        {% endif %}
+
         
-        <style>
-        :root {
-        --red: {{red}};
-        --green: {{green}};
-        --blue: {{blue}};
-
-        --accessible-color: calc(
-            (
-            (
-                (
-                (var(--red) * 299) +
-                (var(--green) * 587) +
-                (var(--blue) * 114)
-                ) / 1000
-            ) - 128
-            ) * -1000
-        );
-        }
-
-        .content {
-            background-color: {{color_keyword}};
-        }
-
-        .content .data {
-        color:
-            rgb(
-            var(--accessible-color),
-            var(--accessible-color),
-            var(--accessible-color)
-            );
-        background-color:
-            rgb(
-            var(--red),
-            var(--green),
-            var(--blue)
-            );
-        }
-        </style>
-
         <div class="links">
         {% if page.url == '/' %}
         <h2>Links:</h2>
@@ -169,8 +131,49 @@ site: Pet Photos
         </ul>
         {% endif %}
         </div>
-
+        
         <footer>Copyright &copy; 2021 All Rights Reserved by Nunya</footer>
+        
     </body>
-    <footer>This is a footer</footer>
+    
+    {% if red %}
+    <style>
+        :root {
+        --red: {{red}};
+        --green: {{green}};
+        --blue: {{blue}};
+
+        --accessible-color: calc(
+            (
+            (
+                (
+                (var(--red) * 299) +
+                (var(--green) * 587) +
+                (var(--blue) * 114)
+                ) / 1000
+            ) - 128
+            ) * -1000
+        );
+        }
+
+        .content {
+            background-color: {{color_keyword}};
+        }
+
+        .content .data {
+        color:
+            rgb(
+            var(--accessible-color)
+            var(--accessible-color)
+            var(--accessible-color)
+            );
+        background-color:
+            rgb(
+            var(--red)
+            var(--green)
+            var(--blue)
+            );
+        }
+    </style>
+    {% endif %}
 </html>
