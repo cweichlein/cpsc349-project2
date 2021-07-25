@@ -66,8 +66,7 @@ body {
     .active-page {
         color: skyblue;
         font-weight: bold;
-        text-decoration: underline dashed;
-        text-underline-offset: 5px;
+        text-decoration: overline dashed;
     }
 
     /* Content area ====================================*/
